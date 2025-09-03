@@ -1,0 +1,31 @@
+.tutorial-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: #232347;
+  color: #eaeaea;
+  border-radius: 12px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.10);
+}
+.tutorial-steps {
+  margin-top: 2rem;
+  padding-left: 1.5rem;
+}
+.tutorial-steps li {
+  margin-bottom: 1.5rem;
+  font-size: 1.15rem;
+  line-height: 1.6;
+}
+.tutorial-note {
+  margin-top: 2rem;
+  background: #2d2d5a;
+  color: #b3b3ff;
+  border-radius: 8px;
+  padding: 1rem;
+  font-size: 1.1rem;
+}
+@media (max-width: 900px) {
+  .tutorial-container {
+    padding: 1rem;
+  }
+}
