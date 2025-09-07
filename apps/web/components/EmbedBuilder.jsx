@@ -10,20 +10,25 @@ import React, { useState, useEffect } from 'react';
  *  - onChange: (embedData) => void
  */
 export default function EmbedBuilder({ embedData = {}, onChange }) {
-  const [data, setData] = useState(() => ({
-    title: '',
-    description: '',
-    color: '#5865F2',
-    url: '',
-    timestamp: false,
-    footer: { text: '', icon_url: '' },
-    author: { name: '', icon_url: '', url: '' },
-    fields: [],
-    ...embedData,
-    footer: { text: '', icon_url: '', ...(embedData.footer || {}) },
-    author: { name: '', icon_url: '', url: '', ...(embedData.author || {}) },
-    fields: embedData.fields || []
-  }));
+  const [data, setData] = useState(() => {
+    const base = {
+      title: '',
+      description: '',
+      color: '#5865F2',
+      url: '',
+      timestamp: false,
+      footer: { text: '', icon_url: '' },
+      author: { name: '', icon_url: '', url: '' },
+      fields: []
+    };
+    return {
+      ...base,
+      ...embedData,
+      footer: { ...base.footer, ...(embedData.footer || {}) },
+      author: { ...base.author, ...(embedData.author || {}) },
+      fields: embedData.fields || base.fields
+    };
+  });
 
   useEffect(() => {
     onChange && onChange(data);

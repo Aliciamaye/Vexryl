@@ -712,9 +712,6 @@ export function loadBlockScript(type, id) {
 }
 
 // Get all blocks by category
-export function getBlocksByCategory(category) {
-  return blockRegistry[category] || {};
-}
 
 // Get all blocks for the workflow builder
 export function getAllBlocks() {
