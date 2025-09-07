@@ -7,6 +7,13 @@ logs/
 .env
 .env.local
 .env.*.local
+.env.production.local
 coverage/
 tmp/
 *.cache
+
+# Sensitive environment files
+.env.production
+.env.development
+.wrangler/
+.supabase/
