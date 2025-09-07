@@ -7,7 +7,10 @@
     "dev": "concurrently \"npm run dev:api\" \"npm run dev:web\"",
     "dev:web": "cd apps/web && npm run dev",
     "dev:api": "cd apps/api && npm run start",
-    "build": "cd apps/web && npm run build",
+    "build": "cd apps/web && npm install --legacy-peer-deps && npm run build",
+    "build:cf": "npm run install:web && npm run build:web",
+    "install:web": "cd apps/web && npm install --legacy-peer-deps",
+    "build:web": "cd apps/web && npm run build",
     "test": "echo \"Visit http://localhost:3000 for the web app and http://localhost:3001 for the API\""
   },
   "devDependencies": {
