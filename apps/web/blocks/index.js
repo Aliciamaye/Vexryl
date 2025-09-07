@@ -253,43 +253,21 @@ const blockRegistry = {
       name: 'Send Message',
       description: 'Send a message to any channel',
       category: 'messaging',
-      component: lazy(() => import('./actions/SendMessage.jsx')),
-      script: lazy(() => import('./actions/SendMessage.js')),
+      component: lazy(() => import('./actions/MessageText.jsx')),
+      script: lazy(() => import('./actions/MessageText.js')),
       config: {
         content: '',
-        embeds: [],
-        components: [],
-        ephemeral: false,
-        tts: false
+        channel: '',
+        ephemeral: false
       }
     },
     'edit-message': {
       name: 'Edit Message',
       description: 'Edit an existing message',
       category: 'messaging',
-      component: lazy(() => import('./actions/EditMessage.jsx')),
-      script: lazy(() => import('./actions/EditMessage.js')),
+      component: lazy(() => import('./actions/MessageEdit.jsx')),
+      script: lazy(() => import('./actions/MessageEdit.js')),
       config: {}
-    },
-    'delete-message': {
-      name: 'Delete Message',
-      description: 'Delete a message',
-      category: 'messaging',
-      component: lazy(() => import('./actions/DeleteMessage.jsx')),
-      script: lazy(() => import('./actions/DeleteMessage.js')),
-      config: {}
-    },
-    'reply': {
-      name: 'Reply',
-      description: 'Reply to the interaction',
-      category: 'messaging',
-      component: lazy(() => import('./actions/Reply.jsx')),
-      script: lazy(() => import('./actions/Reply.js')),
-      config: {
-        content: '',
-        embeds: [],
-        ephemeral: false
-      }
     },
 
     // Member Management
@@ -297,8 +275,8 @@ const blockRegistry = {
       name: 'Add Role',
       description: 'Add roles to a member',
       category: 'moderation',
-      component: lazy(() => import('./actions/AddRole.jsx')),
-      script: lazy(() => import('./actions/AddRole.js')),
+      component: lazy(() => import('./actions/RoleAdd.jsx')),
+      script: lazy(() => import('./actions/RoleAdd.js')),
       config: {
         roles: [],
         reason: ''
@@ -308,8 +286,8 @@ const blockRegistry = {
       name: 'Remove Role',
       description: 'Remove roles from a member',
       category: 'moderation',
-      component: lazy(() => import('./actions/RemoveRole.jsx')),
-      script: lazy(() => import('./actions/RemoveRole.js')),
+      component: lazy(() => import('./actions/RoleRemove.jsx')),
+      script: lazy(() => import('./actions/RoleRemove.js')),
       config: {
         roles: [],
         reason: ''
@@ -319,8 +297,8 @@ const blockRegistry = {
       name: 'Kick Member',
       description: 'Kick a member from the server',
       category: 'moderation',
-      component: lazy(() => import('./actions/KickMember.jsx')),
-      script: lazy(() => import('./actions/KickMember.js')),
+      component: lazy(() => import('./actions/UserKick.jsx')),
+      script: lazy(() => import('./actions/UserKick.js')),
       config: {
         reason: ''
       }
@@ -329,8 +307,8 @@ const blockRegistry = {
       name: 'Ban Member',
       description: 'Ban a member from the server',
       category: 'moderation',
-      component: lazy(() => import('./actions/BanMember.jsx')),
-      script: lazy(() => import('./actions/BanMember.js')),
+      component: lazy(() => import('./actions/UserBan.jsx')),
+      script: lazy(() => import('./actions/UserBan.js')),
       config: {
         reason: '',
         deleteMessageDays: 1
@@ -340,8 +318,8 @@ const blockRegistry = {
       name: 'Timeout Member',
       description: 'Timeout a member',
       category: 'moderation',
-      component: lazy(() => import('./actions/TimeoutMember.jsx')),
-      script: lazy(() => import('./actions/TimeoutMember.js')),
+      component: lazy(() => import('./actions/UserTimeout.jsx')),
+      script: lazy(() => import('./actions/UserTimeout.js')),
       config: {
         duration: 300000,
         reason: ''
@@ -353,8 +331,8 @@ const blockRegistry = {
       name: 'Create Channel',
       description: 'Create a new channel',
       category: 'management',
-      component: lazy(() => import('./actions/CreateChannel.jsx')),
-      script: lazy(() => import('./actions/CreateChannel.js')),
+      component: lazy(() => import('./actions/ChannelCreate.jsx')),
+      script: lazy(() => import('./actions/ChannelCreate.js')),
       config: {
         name: '',
         type: 0,
@@ -365,8 +343,8 @@ const blockRegistry = {
       name: 'Delete Channel',
       description: 'Delete a channel',
       category: 'management',
-      component: lazy(() => import('./actions/DeleteChannel.jsx')),
-      script: lazy(() => import('./actions/DeleteChannel.js')),
+      component: lazy(() => import('./actions/ChannelDelete.jsx')),
+      script: lazy(() => import('./actions/ChannelDelete.js')),
       config: {}
     },
 
@@ -375,8 +353,8 @@ const blockRegistry = {
       name: 'Add Reaction',
       description: 'Add a reaction to a message',
       category: 'messaging',
-      component: lazy(() => import('./actions/AddReaction.jsx')),
-      script: lazy(() => import('./actions/AddReaction.js')),
+      component: lazy(() => import('./actions/ReactionAdd.jsx')),
+      script: lazy(() => import('./actions/ReactionAdd.js')),
       config: {
         emoji: '👍'
       }
@@ -387,56 +365,29 @@ const blockRegistry = {
       name: 'Move Member',
       description: 'Move member to voice channel',
       category: 'voice',
-      component: lazy(() => import('./actions/MoveMember.jsx')),
-      script: lazy(() => import('./actions/MoveMember.js')),
+      component: lazy(() => import('./actions/VoiceMove.jsx')),
+      script: lazy(() => import('./actions/VoiceMove.js')),
       config: {}
     },
     'disconnect-member': {
       name: 'Disconnect Member',
       description: 'Disconnect member from voice',
       category: 'voice',
-      component: lazy(() => import('./actions/DisconnectMember.jsx')),
-      script: lazy(() => import('./actions/DisconnectMember.js')),
+      component: lazy(() => import('./actions/VoiceMove.jsx')),
+      script: lazy(() => import('./actions/VoiceMove.js')),
       config: {}
     },
-
-    // Advanced
-    'webhook': {
-      name: 'Webhook',
-      description: 'Send message via webhook',
-      category: 'advanced',
-      component: lazy(() => import('./actions/Webhook.jsx')),
-      script: lazy(() => import('./actions/Webhook.js')),
-      config: {
-        webhookUrl: '',
-        content: '',
-        username: '',
-        avatarUrl: ''
-      }
-    },
-    'api-request': {
-      name: 'API Request',
-      description: 'Make HTTP API request',
-      category: 'advanced',
-      component: lazy(() => import('./actions/ApiRequest.jsx')),
-      script: lazy(() => import('./actions/ApiRequest.js')),
-      config: {
-        method: 'GET',
-        url: '',
-        headers: {},
-        body: ''
-      }
-    }
+  // (Advanced actions temporarily removed: webhook, api-request - missing implementation files)
   },
 
-  // Conditions (When to execute)
+  // Conditions (When to execute) - Only existing files
   conditions: {
     'user-has-permission': {
       name: 'User Has Permission',
       description: 'Check if user has specific permissions',
       category: 'permissions',
-      component: lazy(() => import('./conditions/UserHasPermission.jsx')),
-      script: lazy(() => import('./conditions/UserHasPermission.js')),
+      component: lazy(() => import('./conditions/UserPermissionCheck.jsx')),
+      script: lazy(() => import('./conditions/UserPermissionCheck.js')),
       config: {
         permissions: []
       }
@@ -456,227 +407,72 @@ const blockRegistry = {
       name: 'Channel Type',
       description: 'Check the channel type',
       category: 'channels',
-      component: lazy(() => import('./conditions/ChannelType.jsx')),
-      script: lazy(() => import('./conditions/ChannelType.js')),
+      component: lazy(() => import('./conditions/ChannelTypeIs.jsx')),
+      script: lazy(() => import('./conditions/ChannelTypeIs.js')),
       config: {
         types: []
       }
     },
-    'server-boost-level': {
-      name: 'Server Boost Level',
-      description: 'Check server boost level',
-      category: 'server',
-      component: lazy(() => import('./conditions/ServerBoostLevel.jsx')),
-      script: lazy(() => import('./conditions/ServerBoostLevel.js')),
-      config: {
-        minLevel: 0
-      }
-    },
-    'member-count': {
-      name: 'Member Count',
-      description: 'Check server member count',
-      category: 'server',
-      component: lazy(() => import('./conditions/MemberCount.jsx')),
-      script: lazy(() => import('./conditions/MemberCount.js')),
-      config: {
-        operator: '>=',
-        value: 100
-      }
-    },
-    'time-condition': {
-      name: 'Time Condition',
-      description: 'Check current time/date',
-      category: 'time',
-      component: lazy(() => import('./conditions/TimeCondition.jsx')),
-      script: lazy(() => import('./conditions/TimeCondition.js')),
-      config: {
-        timezone: 'UTC',
-        startTime: '00:00',
-        endTime: '23:59'
-      }
-    },
-    'random-chance': {
-      name: 'Random Chance',
-      description: 'Random percentage chance',
-      category: 'utility',
-      component: lazy(() => import('./conditions/RandomChance.jsx')),
-      script: lazy(() => import('./conditions/RandomChance.js')),
-      config: {
-        percentage: 50
-      }
-    },
-    'cooldown': {
-      name: 'Cooldown',
-      description: 'Rate limiting for users',
-      category: 'utility',
-      component: lazy(() => import('./conditions/Cooldown.jsx')),
-      script: lazy(() => import('./conditions/Cooldown.js')),
-      config: {
-        duration: 60000,
-        scope: 'user'
-      }
-    }
-  },
-
-  // Event Flows (Discord Events)
-  flows: {
-    // Member Events
-    'member-join': {
-      name: 'Member Join',
-      description: 'When a member joins the server',
-      category: 'member',
-      component: lazy(() => import('./flows/MemberJoin.jsx')),
-      script: lazy(() => import('./flows/MemberJoin.js')),
-      event: 'guildMemberAdd'
-    },
-    'member-leave': {
-      name: 'Member Leave',
-      description: 'When a member leaves the server',
-      category: 'member',
-      component: lazy(() => import('./flows/MemberLeave.jsx')),
-      script: lazy(() => import('./flows/MemberLeave.js')),
-      event: 'guildMemberRemove'
-    },
-    'member-update': {
-      name: 'Member Update',
-      description: 'When member info changes',
-      category: 'member',
-      component: lazy(() => import('./flows/MemberUpdate.jsx')),
-      script: lazy(() => import('./flows/MemberUpdate.js')),
-      event: 'guildMemberUpdate'
-    },
-
-    // Message Events
-    'message-create': {
-      name: 'Message Create',
-      description: 'When a message is sent',
+    'message-contains': {
+      name: 'Message Contains',
+      description: 'Check if message contains specific text',
       category: 'message',
-      component: lazy(() => import('./flows/MessageCreate.jsx')),
-      script: lazy(() => import('./flows/MessageCreate.js')),
+      component: lazy(() => import('./conditions/MessageContains.jsx')),
+      script: lazy(() => import('./conditions/MessageContains.js')),
+      config: {
+        text: '',
+        caseSensitive: false
+      }
+    },
+    'user-is-bot': {
+      name: 'User Is Bot',
+      description: 'Check if user is a bot',
+      category: 'user',
+      component: lazy(() => import('./conditions/UserIsBot.jsx')),
+      script: lazy(() => import('./conditions/UserIsBot.js')),
+      config: {}
+    },
+    'message-has-attachment': {
+      name: 'Message Has Attachment',
+      description: 'Check if message has attachments',
+      category: 'message',
+      component: lazy(() => import('./conditions/MessageHasAttachment.jsx')),
+      script: lazy(() => import('./conditions/MessageHasAttachment.js')),
+      config: {}
+    }
+  },  // Event Flows (Discord Events) - Only existing files
+  flows: {
+    // Message Events
+    'message-received': {
+      name: 'Message Received',
+      description: 'When a message is received',
+      category: 'message',
+      component: lazy(() => import('./flows/OnMessageReceived.jsx')),
+      script: lazy(() => import('./flows/OnMessageReceived.js')),
       event: 'messageCreate'
     },
-    'message-delete': {
-      name: 'Message Delete',
-      description: 'When a message is deleted',
-      category: 'message',
-      component: lazy(() => import('./flows/MessageDelete.jsx')),
-      script: lazy(() => import('./flows/MessageDelete.js')),
-      event: 'messageDelete'
-    },
-    'message-update': {
-      name: 'Message Update',
-      description: 'When a message is edited',
-      category: 'message',
-      component: lazy(() => import('./flows/MessageUpdate.jsx')),
-      script: lazy(() => import('./flows/MessageUpdate.js')),
-      event: 'messageUpdate'
-    },
-
-    // Reaction Events  
-    'reaction-add': {
-      name: 'Reaction Add',
+    'reaction-added': {
+      name: 'Reaction Added',
       description: 'When a reaction is added',
       category: 'reaction',
-      component: lazy(() => import('./flows/ReactionAdd.jsx')),
-      script: lazy(() => import('./flows/ReactionAdd.js')),
+      component: lazy(() => import('./flows/OnReactionAdded.jsx')),
+      script: lazy(() => import('./flows/OnReactionAdded.js')),
       event: 'messageReactionAdd'
     },
-    'reaction-remove': {
-      name: 'Reaction Remove',
-      description: 'When a reaction is removed',
-      category: 'reaction',
-      component: lazy(() => import('./flows/ReactionRemove.jsx')),
-      script: lazy(() => import('./flows/ReactionRemove.js')),
-      event: 'messageReactionRemove'
+    'user-joined': {
+      name: 'User Joined',
+      description: 'When a user joins the server',
+      category: 'member',
+      component: lazy(() => import('./flows/OnUserJoined.jsx')),
+      script: lazy(() => import('./flows/OnUserJoined.js')),
+      event: 'guildMemberAdd'
     },
-
-    // Voice Events
-    'voice-state-update': {
-      name: 'Voice State Update',
-      description: 'When voice state changes',
-      category: 'voice',
-      component: lazy(() => import('./flows/VoiceStateUpdate.jsx')),
-      script: lazy(() => import('./flows/VoiceStateUpdate.js')),
-      event: 'voiceStateUpdate'
-    },
-
-    // Server Events
-    'guild-ban-add': {
-      name: 'Member Banned',
-      description: 'When a member is banned',
-      category: 'moderation',
-      component: lazy(() => import('./flows/GuildBanAdd.jsx')),
-      script: lazy(() => import('./flows/GuildBanAdd.js')),
-      event: 'guildBanAdd'
-    },
-    'guild-ban-remove': {
-      name: 'Member Unbanned',
-      description: 'When a member is unbanned',
-      category: 'moderation',
-      component: lazy(() => import('./flows/GuildBanRemove.jsx')),
-      script: lazy(() => import('./flows/GuildBanRemove.js')),
-      event: 'guildBanRemove'
-    },
-
-    // Channel Events
-    'channel-create': {
-      name: 'Channel Create',
-      description: 'When a channel is created',
-      category: 'channel',
-      component: lazy(() => import('./flows/ChannelCreate.jsx')),
-      script: lazy(() => import('./flows/ChannelCreate.js')),
-      event: 'channelCreate'
-    },
-    'channel-delete': {
-      name: 'Channel Delete',
-      description: 'When a channel is deleted',
-      category: 'channel',
-      component: lazy(() => import('./flows/ChannelDelete.jsx')),
-      script: lazy(() => import('./flows/ChannelDelete.js')),
-      event: 'channelDelete'
-    },
-
-    // Role Events
-    'role-create': {
-      name: 'Role Create',
-      description: 'When a role is created',
-      category: 'role',
-      component: lazy(() => import('./flows/RoleCreate.jsx')),
-      script: lazy(() => import('./flows/RoleCreate.js')),
-      event: 'roleCreate'
-    },
-    'role-delete': {
-      name: 'Role Delete',
-      description: 'When a role is deleted',
-      category: 'role',
-      component: lazy(() => import('./flows/RoleDelete.jsx')),
-      script: lazy(() => import('./flows/RoleDelete.js')),
-      event: 'roleDelete'
-    },
-
-    // Interaction Events
-    'button-click': {
-      name: 'Button Click',
+    'button-clicked': {
+      name: 'Button Clicked',
       description: 'When a button is clicked',
       category: 'interaction',
-      component: lazy(() => import('./flows/ButtonClick.jsx')),
-      script: lazy(() => import('./flows/ButtonClick.js')),
-      event: 'interactionCreate'
-    },
-    'select-menu': {
-      name: 'Select Menu',
-      description: 'When select menu is used',
-      category: 'interaction',
-      component: lazy(() => import('./flows/SelectMenu.jsx')),
-      script: lazy(() => import('./flows/SelectMenu.js')),
-      event: 'interactionCreate'
-    },
-    'modal-submit': {
-      name: 'Modal Submit',
-      description: 'When a modal is submitted',
-      category: 'interaction',
-      component: lazy(() => import('./flows/ModalSubmit.jsx')),
-      script: lazy(() => import('./flows/ModalSubmit.js')),
+      component: lazy(() => import('./flows/OnButtonClick.jsx')),
+      script: lazy(() => import('./flows/OnButtonClick.js')),
       event: 'interactionCreate'
     }
   }
