@@ -1,23 +1,26 @@
-## Optional Cloudflare Worker config (NOT required for Pages)
-# name = "vexryl-api"
-# main = "worker.js"
-# compatibility_date = "2024-09-01"
+name = "vexryl-api"
+main = "src/index.js"
+compatibility_date = "2024-09-01"
+compatibility_flags = ["nodejs_compat"]
 
-# Environment variables should be added via `wrangler.toml` only if deploying this worker.
+[env.production]
+name = "vexryl-api"
+
+[env.development]
+name = "vexryl-api-dev"
+
+# Environment variables - set via Cloudflare dashboard
+[vars]
+ENVIRONMENT = "production"
+API_VERSION = "v1"
+
 # Remove any hard-coded secrets. Use `wrangler secret put` for sensitive values.
-#[vars]
-# SUPABASE_URL = "https://your-project.supabase.co"
-# SUPABASE_ANON_KEY = "your-anon-key"
-
-#[env.development]
-# name = "vexryl-api-dev"
-
-#[env.production]
-# name = "vexryl-api-prod"
-
-# Secrets (set with: wrangler secret put SUPABASE_SERVICE_ROLE_KEY)
+# Set these secrets via: wrangler secret put SECRET_NAME
+# SUPABASE_URL
+# SUPABASE_ANON_KEY  
 # SUPABASE_SERVICE_ROLE_KEY
 # GITHUB_TOKEN
+# DISCORD_CLIENT_SECRET
 
 #[[kv_namespaces]]
 # binding = "CACHE"

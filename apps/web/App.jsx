@@ -1,27 +1,49 @@
 import React from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
+import { useAuth } from "./hooks/useAuth";
+import AuthPage from "./AuthPage";
+import Dashboard from "./Dashboard";
+import Marketplace from "./Marketplace";
+import DocsPage from "./DocsPage";
+import LoadingSpinner from "./components/LoadingSpinner";
+import ToastContainer from "./components/ToastContainer";
 
 function App() {
+  const { user, loading } = useAuth();
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <LoadingSpinner size="large" text="Loading Vexryl..." />
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-gray-50">
-      <header className="bg-white border-b border-gray-200 shadow py-4 px-8">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <img src="/assets/vexryl-logo.png" alt="Vexryl Logo" className="h-10" />
-            <h1 className="text-xl font-bold">Vexryl</h1>
-          </div>
-          <nav className="flex gap-6">
-            <a href="/dashboard" className="hover:text-purple-600">Dashboard</a>
-            <a href="/marketplace" className="hover:text-purple-600">Marketplace</a>
-            <a href="/docs" className="hover:text-purple-600">Documentation</a>
-          </nav>
-        </div>
-      </header>
-      <main className="py-8 px-4 max-w-7xl mx-auto">
-        <h1 className="text-3xl font-bold mb-6">Welcome to Vexryl</h1>
-        <p className="text-lg mb-8">
-          The most powerful Discord bot builder platform with visual programming.
-        </p>
-      </main>
+      <Routes>
+        <Route 
+          path="/auth" 
+          element={user ? <Navigate to="/dashboard" replace /> : <AuthPage />} 
+        />
+        <Route 
+          path="/dashboard/*" 
+          element={user ? <Dashboard /> : <Navigate to="/auth" replace />} 
+        />
+        <Route 
+          path="/marketplace" 
+          element={user ? <Marketplace /> : <Navigate to="/auth" replace />} 
+        />
+        <Route 
+          path="/docs" 
+          element={<DocsPage />} 
+        />
+        <Route 
+          path="/" 
+          element={user ? <Navigate to="/dashboard" replace /> : <Navigate to="/auth" replace />} 
+        />
+      </Routes>
+      <ToastContainer />
     </div>
   );
 }
