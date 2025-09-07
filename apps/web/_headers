@@ -1,0 +1,21 @@
+# Cloudflare Pages Configuration
+
+Build command: npm run build
+Build output directory: dist
+Root directory: apps/web
+
+# Environment Variables (set in Cloudflare Pages dashboard)
+VITE_SUPABASE_URL=https://jzqxzyihkxtzhmdogvbn.supabase.co
+VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp6cXh6eWloa3h0emhtZG9ndmJuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTcyMjk4MTEsImV4cCI6MjA3MjgwNTgxMX0.AhbMQF2-kYYK7SwypLyc5UUJr2Um21HDtHhMvcTPwOM
+VITE_API_URL=https://vexryl-api.your-subdomain.workers.dev
+VITE_ENVIRONMENT=production
+
+# Custom Headers
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-XSS-Protection: 1; mode=block
+
+# Redirects
+/api/* https://vexryl-api.your-subdomain.workers.dev/api/:splat 200

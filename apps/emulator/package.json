@@ -1,0 +1,13 @@
+{
+  "name": "vexryl-emulator",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.1",
+    "@testing-library/react": "^14.1.2",
+    "@testing-library/jest-dom": "^6.1.5",
+    "msw": "^1.2.3",
+    "supertest": "^6.3.3"
+  }
+}

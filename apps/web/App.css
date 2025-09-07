@@ -1,0 +1,131 @@
+/* App.css - Landing page styles */
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Hero section gradients */
+.hero-gradient {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Button hover effects */
+.btn-primary {
+  background: linear-gradient(45deg, #3b82f6, #1d4ed8);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+}
+
+.btn-secondary {
+  background: linear-gradient(45deg, #374151, #1f2937);
+  transition: all 0.3s ease;
+  border: 1px solid #4b5563;
+}
+
+.btn-secondary:hover {
+  transform: translateY(-2px);
+  border-color: #6b7280;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Navigation styles */
+.nav-link {
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #60a5fa;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #60a5fa;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Card animations */
+.marketplace-card,
+.doc-card {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.marketplace-card:hover,
+.doc-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Dark/Light theme specific styles */
+.dark .marketplace-card,
+.dark .doc-card {
+  background: linear-gradient(145deg, #374151, #1f2937);
+  border-color: #4b5563;
+}
+
+.light .marketplace-card,
+.light .doc-card {
+  background: linear-gradient(145deg, #f3f4f6, #e5e7eb);
+  border-color: #d1d5db;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 2rem 1rem;
+  }
+  
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .hero-description {
+    font-size: 1rem;
+  }
+}
+
+/* Loading and animation states */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .5;
+  }
+}
+
+.pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(-25%);
+    animation-timing-function: cubic-bezier(0.8,0,1,1);
+  }
+  50% {
+    transform: none;
+    animation-timing-function: cubic-bezier(0,0,0.2,1);
+  }
+}
+
+.bounce {
+  animation: bounce 1s infinite;
+}

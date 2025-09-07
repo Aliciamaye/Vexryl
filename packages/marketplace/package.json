@@ -1,0 +1,11 @@
+{
+  "name": "vexryl-marketplace",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "react": "^18.2.0",
+    "zustand": "^4.4.0",
+    "react-json-view": "^1.21.3",
+    "uuid": "^9.0.1"
+  }
+}

@@ -1,0 +1,21 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Circle -->
+  <circle cx="256" cy="256" r="240" fill="url(#gradient1)"/>
+  
+  <!-- Main V Shape -->
+  <path d="M140 180 L220 340 L256 270 L292 340 L372 180 L320 180 L256 300 L192 180 Z" fill="white"/>
+  
+  <!-- Bot Circuit Pattern -->
+  <circle cx="200" cy="200" r="8" fill="rgba(255,255,255,0.3)"/>
+  <circle cx="312" cy="200" r="8" fill="rgba(255,255,255,0.3)"/>
+  <path d="M200 200 L312 200" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
+  
+  <!-- Gradient Definition -->
+  <defs>
+    <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="50%" stop-color="#8B5CF6"/>
+      <stop offset="100%" stop-color="#EC4899"/>
+    </linearGradient>
+  </defs>
+</svg>

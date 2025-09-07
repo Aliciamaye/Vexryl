@@ -1,0 +1,23 @@
+name = "vexryl-api"
+main = "worker.js"
+compatibility_date = "2023-10-30"
+
+# Environment variables (set these in Cloudflare dashboard)
+[vars]
+SUPABASE_URL = "https://jzqxzyihkxtzhmdogvbn.supabase.co"
+SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp6cXh6eWloa3h0emhtZG9ndmJuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTcyMjk4MTEsImV4cCI6MjA3MjgwNTgxMX0.AhbMQF2-kYYK7SwypLyc5UUJr2Um21HDtHhMvcTPwOM"
+
+[env.development]
+name = "vexryl-api-dev"
+
+[env.production] 
+name = "vexryl-api-prod"
+
+# Secrets (set these with wrangler secret put)
+# SUPABASE_SERVICE_ROLE_KEY
+# GITHUB_TOKEN
+
+[[kv_namespaces]]
+binding = "CACHE"
+id = "your_kv_namespace_id"
+preview_id = "your_kv_preview_id"
